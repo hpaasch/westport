@@ -1,0 +1,18 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Westport</title>
+    <link rel="stylesheet" href="{% static 'nabes_app/css/bootstrap.css' %}" media="screen" title="bootstrap" charset="utf-8">
+   <link rel="stylesheet" href="{% static 'nabes_app/css/main.css' %}" >
+  </head>
+  <body>
+    {% block content %}
+      <p>
+        A neighborhood site for the Westport Neighborhood in eastern Lincoln County, NC.
+      </p>
+    {% endblock %}
+  </body>
+</html>
