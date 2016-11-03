@@ -6,3 +6,7 @@
   -o-background-size: cover;
   color: #CCFFFF; /* sets text color */
 }
+
+.row {
+  background-color: #ccffff;
+}
