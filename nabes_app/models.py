@@ -26,6 +26,11 @@ class PublicPost(models.Model):
     class Meta:
         ordering = ['-created']
 
+    @property
+    def photo_url(self):
+        if self.photo:
+            return self.photo.url    
+
 
 class MemberPost(models.Model):
     body = models.CharField(max_length=300)
