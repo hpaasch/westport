@@ -7,32 +7,37 @@
       <p>It's time for a sail</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn how</a></p>
   </div>
-
-
 </div>
 <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      {% for post in object_list %}
+        <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
+        <h3>{{ post.body }}</h3>
+        <p>
+          {{ post.author }}, posted: {{ post.created }}
+        </p>
+      {% endfor %}
 
-<div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    {% for post in object_list %}
-      <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
-      <h3>{{ post.body }}</h3>
-      <p>
-        {{ post.author }}, posted: {{ post.created }}
-      </p>
-    {% endfor %}
+    </div>
+    <div class="col-md-2">
+      <h3>Association Officers</h3>
+      <ul>
+        <li>Barb Nundell</li>
+        <li>Candy Korn</li>
+        <li>Bobby Dunna</li>
+      </ul>
 
+    </div>
+    <div class="col-md-4">
+      <h2>More resources you may need one day</h2>
+      <ul>
+        <li>Lake levels for now and forever</li>
+        <li>Lake temps is it too cold to jump in</li>
+        <li>Weather forecast for every single day</li>
+        <li>How to get a dock when your neighbors don't</li>
+      </ul>
+    </div>
   </div>
-  <div class="col-md-6">.col-md-6</div>
-</div>
 </div>
 {% endblock %}

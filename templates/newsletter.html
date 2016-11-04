@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for newsletter in object_list %}
+    <h4>{{ newsletter.created }}</h4>
+  {% endfor %}
+{% endblock %}

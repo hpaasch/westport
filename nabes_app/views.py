@@ -9,4 +9,8 @@ Profile)
 class IndexView(ListView):
     template_name = 'index.html'
     model = PublicPost
-    
+
+
+class NewsletterView(ListView):
+    template_name = 'newsletter.html'
+    model = Newsletter
