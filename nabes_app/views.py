@@ -11,6 +11,6 @@ class IndexView(ListView):
     model = PublicPost
 
 
-class NewsletterView(ListView):
+class NewsletterListView(ListView):
     template_name = 'newsletter.html'
     model = Newsletter

@@ -2,6 +2,6 @@
 
 {% block content %}
   {% for newsletter in object_list %}
-    <h4>{{ newsletter.created }}</h4>
+<embed src="{{ newsletter.document_url }}" width="800px" height="1100px" />
   {% endfor %}
 {% endblock %}
