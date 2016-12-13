@@ -3,13 +3,23 @@
 {% block content %}
 <div class="jumbotron">
   <div class="container-fluid">
-    <h1>Hello, Westport!</h1>
-      <p>It's time for a sail</p>
+    <h1>Westport Community Association</h1>
+      <p>Celebrating 50 years</p>
       <p><a class="btn btn-primary btn-lg" href=# role="button">Join!</a></p>
   </div>
 </div>
 <div class="container">
   <div class="row">
+    <div class="col-md-2">
+      <h3>Association Officers</h3>
+        {% for officer in officer_list %}
+        <h5> {{ officer.title }}</h5>
+        <p>{{ officer.name }}</p>
+        {% endfor %}
+
+    </div>
+
+
     <div class="col-md-6">
       {% for post in object_list %}
         <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
@@ -20,23 +30,12 @@
       {% endfor %}
 
     </div>
-    <div class="col-md-2">
-      <h3>Association Officers</h3>
-      <ul>
-        <li>Barb Nundell</li>
-        <li>Candy Korn</li>
-        <li>Bobby Dunna</li>
-      </ul>
 
-    </div>
     <div class="col-md-4">
-      <h2>More resources you may need one day</h2>
-      <ul>
-        <li>Lake levels for now and forever</li>
-        <li>Lake temps is it too cold to jump in</li>
-        <li>Weather forecast for every single day</li>
-        <li>How to get a dock when your neighbors don't</li>
-      </ul>
+      <h2>Join now!</h2>
+        <p>Click here to pay online.</p>
+        <p>Click here to print out a form to mail in or drop off.</p>
+
     </div>
   </div>
 </div>

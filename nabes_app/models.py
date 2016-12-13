@@ -29,7 +29,7 @@ class PublicPost(models.Model):
     @property
     def photo_url(self):
         if self.photo:
-            return self.photo.url    
+            return self.photo.url
 
 
 class MemberPost(models.Model):
@@ -63,6 +63,15 @@ class Newsletter(models.Model):
             return self.document.url
         return static('nabes_app/img/newsletter_default.pdf')
 
+class Officer(models.Model):
+    title = models.CharField(max_length=50)
+    name = models.CharField(max_length=30)
+    phone = models.CharField(max_length=12)
+    email = models.EmailField(max_length=50)
+    term = models.CharField(max_length=7)
+
+    def __str__(self):
+        return self.name
 
 @receiver(post_save, sender='auth.User')
 def create_user_profile(**kwargs):
