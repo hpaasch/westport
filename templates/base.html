@@ -22,7 +22,7 @@
           {% else %}
             <a class="btn btn-primary" href="{% url 'index_view' %}">Homepage</a>
             <a class="btn btn-primary" href=#>Sign In</a>
-            <a class="btn btn-primary" href=#>Create Account</a>
+            <a class="btn btn-primary" href={% url 'create_account_view' %}>Create Account</a>
           {% endif %}
 
       </div>
