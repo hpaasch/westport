@@ -10,7 +10,7 @@ class Profile(models.Model):
     primary_last_name = models.CharField(max_length=20, default='please provide primary last name')
     photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     email = models.EmailField(max_length=50)
-    number = models.IntegerField
+    number = models.PositiveIntegerField(null=True, default=0)
     street = models.CharField(max_length=50, default='please add street name')
 
     @property

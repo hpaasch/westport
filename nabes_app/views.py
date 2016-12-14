@@ -38,7 +38,10 @@ class ProfileView(ListView):
 class ProfileUpdateView(UpdateView):
     model = Profile
     success_url = reverse_lazy('profile_view')
-    fields = ['primary_last_name', 'email', 'number', 'street', 'photo']
+    fields = ['primary_last_name', 'email', 'street', 'photo']
+
+    def get_object(self, queryset=None):
+        return self.request.user.profile
 
 
 class NewsletterListView(ListView):
