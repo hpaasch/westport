@@ -31,10 +31,14 @@ class CreateAccountView(CreateView):
     success_url = reverse_lazy('login')
 
 
-class ProfileView(DetailView):
-    template_name = 'profile.html'
+class ProfileView(ListView):
     model = Profile
 
+
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    success_url = reverse_lazy('profile_view')
+    fields = ['primary_last_name', 'email', 'number', 'street', 'photo']
 
 
 class NewsletterListView(ListView):

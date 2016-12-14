@@ -6,9 +6,12 @@ from django.contrib.staticfiles.templatetags.staticfiles import static # default
 
 
 class Profile(models.Model):
-    user = models.OneToOneField('auth.User')
+    resident = models.OneToOneField('auth.User')
+    primary_last_name = models.CharField(max_length=20, default='please provide primary last name')
     photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     email = models.EmailField(max_length=50)
+    number = models.IntegerField
+    street = models.CharField(max_length=50, default='please add street name')
 
     @property
     def photo_url(self):
@@ -79,4 +82,4 @@ def create_user_profile(**kwargs):
     instance = kwargs.get('instance')
 
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(resident=instance)
