@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 from nabes_app.models import (PublicPost, BoardPost, MemberPost, Newsletter,
 Profile, Officer)
 
+from nabes_app.forms import ProfileUpdateForm
+
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -42,6 +44,16 @@ class ProfileUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user.profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["profile_form"] = ProfileUpdateForm(initial={
+            "name": self.request.user.profile.primary_last_name,
+            "email": self.request.user.profile.email,
+            "number": self.request.user.profile.number,
+            "street": self.request.user.profile.street,
+            })
+        return context
 
 
 class NewsletterListView(ListView):
