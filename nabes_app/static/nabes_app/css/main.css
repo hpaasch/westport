@@ -1,5 +1,5 @@
 .jumbotron {
-  background: #000 url(/static/nabes_app/img/sailing.jpg) no-repeat center center; /* can also add "fixed" and other stuff */
+  background: #000 url(/static/nabes_app/img/westport_1.jpg) no-repeat center center; /* can also add "fixed" and other stuff */
   background-size: cover; /* all 4 'covers' make the image responsive */
   -moz-background-size: cover;
   -webkit-background-size: cover;

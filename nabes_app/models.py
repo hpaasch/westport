@@ -63,8 +63,12 @@ class BoardPost(models.Model):
 
 class Newsletter(models.Model):
     document = models.FileField(upload_to='documents') # have it verify a pdf?
+    headline = models.CharField(max_length=50, default='Month: Highlight here')
     author = models.ForeignKey('auth.User')
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.headline
 
     @property
     def document_url(self):
