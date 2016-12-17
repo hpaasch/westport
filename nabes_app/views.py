@@ -36,24 +36,27 @@ class CreateAccountView(CreateView):
 class ProfileView(ListView):
     model = Profile
 
+    def get_object(self, queryset=None):
+        return self.request.user.profile
+
 
 class ProfileUpdateView(UpdateView):
     model = Profile
     success_url = reverse_lazy('profile_view')
-    fields = ['primary_last_name', 'email', 'street', 'photo']
+    fields = ['primary_last_name', 'primary_email', 'number', 'street', 'photo']
 
     def get_object(self, queryset=None):
         return self.request.user.profile
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["profile_form"] = ProfileUpdateForm(initial={
-            "name": self.request.user.profile.primary_last_name,
-            "email": self.request.user.profile.email,
-            "number": self.request.user.profile.number,
-            "street": self.request.user.profile.street,
-            })
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["profile_form"] = ProfileUpdateForm(initial={
+    #         "name": self.request.user.profile.primary_last_name,
+    #         "email": self.request.user.profile.email,
+    #         "number": self.request.user.profile.number,
+    #         "street": self.request.user.profile.street,
+    #         })
+    #     return context
 
 
 class NewsletterListView(ListView):

@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="panel panel-default">
-<div class="panel-heading">
-  <h3 class="panel-title">Profile for: {{ user }}</h3>
+<div class="col-md-6">
+  <img class="img-responsive" src="{{ user.profile.photo_url }}" alt="Responsive profile photo">
 </div>
-  <div class="panel-body">
-    <ul>
-      <li>Primary Last Name: {{ primary_last_name }}</li>
-      <li>Email: {{ email }}</li>
-      <li>House number: {{ number }}</li>
-      <li>Street name: {{ street }}</li>
-    </ul>
-      <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
-      <a class='btn btn-primary' role='button' href=#>Paypal here</a>
-  </div>
+<div class="col-md-6">
+    <p>Username: {{ user }}</p>
+    <p>Primary Last Name: {{ user.profile.primary_last_name }}</p>
+    <p>Secondary Last Name: {{ user.profile.secondary_last_name }}</p>
+    <p>Family members: {{ user.profile.family_members }}</p>
+    <p>Primary Phone: {{ user.profile.primary_phone }}</p>
+    <p>Secondary Phone: {{ user.profile.secondary_phone }}</p>
+    <p>Primary Email: {{ user.profile.primary_email }}</p>
+    <p>Westport address: {{ user.profile.number }} {{ user.profile.street }}</p>
+    <p>Dues paid: {{ user.profile.paypal }}</p>
+    <p>    <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
+</p>
+    <p><a class='btn btn-primary' role='button' href=#>Make Paypal payment</a></p>
+    <p><a class='btn btn-primary' role='button' href=#>Pay with a check</a></p>
+
+
+
 </div>
+
 {% endblock %}

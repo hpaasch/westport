@@ -8,10 +8,16 @@ from django.contrib.staticfiles.templatetags.staticfiles import static # default
 class Profile(models.Model):
     resident = models.OneToOneField('auth.User')
     primary_last_name = models.CharField(max_length=20, default='please provide primary last name')
+    secondary_last_name = models.CharField(max_length=20, default='secondary last name optional')
+    primary_phone = models.CharField(max_length=12, default='xxx-xxx-xxxx')
+    secondary_phone = models.CharField(max_length=12, default='xxx-xxx-xxxx')
+    family_members = models.CharField(max_length=100, default='No family members listed yet')
     photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
-    email = models.EmailField(max_length=50)
+    primary_email = models.EmailField(max_length=50)
     number = models.PositiveIntegerField(null=True, default=0)
     street = models.CharField(max_length=50, default='please add street name')
+    paypal = models.CharField(max_length=10, default='please pay your dues')
+    check = models.CharField(max_length=10, default='please pay your dues')
 
     @property
     def photo_url(self):

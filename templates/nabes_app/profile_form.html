@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form class="" action="" method="post">
+<form class="" action={% url 'profile_update_view' %} method="post" enctype-"multipart/form-data">
   {% csrf_token %}
-  {{ profile_form.as_p }}
+  {{ form.as_p }}
   <input type="submit" name="update_profile" value="Update profile">
 </form>
 {% endblock %}
