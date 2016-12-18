@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-2">
+  <h3>Association leadership</h3>
+    {% for officer in officer_list %}
+    <h5> {{ officer.title }}</h5>
+    <p> <a href="mailto:{{ officer.email }}">{{ officer.name }}</a></p>
+    {% endfor %}
+
+</div>
+{% endblock %}

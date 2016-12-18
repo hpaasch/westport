@@ -1,48 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="jumbotron">
-  <div class="container-fluid">
-    <h1>Westport Community Association</h1>
-      <p>Celebrating 50 years</p>
-  </div>
-</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
-      <h3>Association leadership</h3>
-        {% for officer in officer_list %}
-        <h5> {{ officer.title }}</h5>
-        <p>{{ officer.name }}</p>
-        {% endfor %}
-
-    </div>
-
 
     <div class="col-md-6">
-      {% for post in object_list %}
-        <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
-        <h3>{{ post.body }}</h3>
-        <p>
-          {{ post.author }}, posted: {{ post.created }}
-        </p>
-      {% endfor %}
+      <div class="thumbnail">
+        {% for public_post in object_list|slice:":1" %}
+          <img class="img-responsive" src="{{ public_post.photo_url }}" alt="Responsive image" />
+          <div class="caption">
+            <h3>{{ public_post.headline }}</h3>
+            <p>{{public_post.body}}</p>
+          </div>
+
+        {% endfor %}
+
+      </div>
 
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
       <h2>Join now!</h2>
-        <h4>Click here to pay online. </h4>
+        <h4>Create a Westport account</h4>
         <ul>
-          <li>Create a simple Westport profile</li>
-          <li>Use PayPal to make a payment</li>
-          <li>You do not have to create a PayPal account; you can use PayPal as a guest</li>
+          <li>Whether you pay online or with a check, please create a Westport account.</li>
+          <li>Your information will be used in the neighborhood directory.</li>
+          <li>We do not sell or share our neighborhood list.</li>
         </ul>
-        <h4>Click here to pay by to mail or drop off a check. </h4>
-        <>
-          <li>Print out the profile form</li>
-          <li>Write a check to the Westport Community Association</li>
-          <li>Mail or drop off: Anke Island View Court</li>
+        <h4>Pay online</h4>
+        <ul>
+          <li>Click here to pay online using PayPal.</li>
+          <li>You can use PayPal as a guest; you do not need a PayPal account.</li>
+        </ul>
+        <h4>Pay by check</h4>
+        <ul>
+          <li>Click here to print out the membership form.</li>
+          <li>Write a check to the "Westport Community Association."</li>
+          <li>Mail or drop off: <br> Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
         </ul>
     </div>
   </div>

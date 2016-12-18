@@ -23,10 +23,11 @@ class Profile(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo.url
-        return static('nabes_app/img/w.png')
+        return static('nabes_app/img/westport_1.jpg')
 
 
 class PublicPost(models.Model):
+    headline = models.CharField(max_length=60, default='Write a headline')
     body = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
