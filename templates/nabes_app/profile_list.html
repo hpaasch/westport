@@ -2,10 +2,8 @@
 
 {% block content %}
 <div class="col-md-6">
-  <img class="img-responsive" src="{{ user.profile.photo_url }}" alt="Responsive profile photo">
-</div>
-<div class="col-md-6">
-    <p>Username: {{ user }}</p>
+  <h3>Step One: Fill out the profile for {{ user }}</h3>
+<h5>(For use in the Westport directory)</h5>
     <p>Primary Last Name: {{ user.profile.primary_last_name }}</p>
     <p>Secondary Last Name: {{ user.profile.secondary_last_name }}</p>
     <p>Family members: {{ user.profile.family_members }}</p>
@@ -16,11 +14,15 @@
     <p>Dues paid: {{ user.profile.paypal }}</p>
     <p>    <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
 </p>
-    <p><a class='btn btn-primary' role='button' href=#>Make Paypal payment</a></p>
-    <p><a class='btn btn-primary' role='button' href=#>Pay with a check</a></p>
+<h3>Step Two: Pay your $40 dues</h3>
+<h5>(You can use Paypal as a guest, or you can use your Paypal account.)</h5>
+    <p><a class='btn btn-primary' role='button' href=#>Make  payment</a></p>
 
 
 
 </div>
 
 {% endblock %}
+<div class="col-md-6">
+  <img class="img-responsive" src="{{ user.profile.photo_url }}" alt="Responsive profile photo">
+</div>

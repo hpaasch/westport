@@ -7,15 +7,15 @@ from django.contrib.staticfiles.templatetags.staticfiles import static # default
 
 class Profile(models.Model):
     resident = models.OneToOneField('auth.User')
-    primary_last_name = models.CharField(max_length=20, default='please provide primary last name')
-    secondary_last_name = models.CharField(max_length=20, default='secondary last name optional')
-    primary_phone = models.CharField(max_length=12, default='xxx-xxx-xxxx')
-    secondary_phone = models.CharField(max_length=12, default='xxx-xxx-xxxx')
-    family_members = models.CharField(max_length=100, default='No family members listed yet')
-    photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
-    primary_email = models.EmailField(max_length=50)
+    primary_last_name = models.CharField(max_length=20, default='')
+    secondary_last_name = models.CharField(max_length=20, default='optional', null=True, blank=True)
+    primary_phone = models.CharField(max_length=12, default='')
+    secondary_phone = models.CharField(max_length=12, default='optional', null=True, blank=True)
+    family_members = models.CharField(max_length=100, default='optional', null=True, blank=True)
+    # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
+    primary_email = models.EmailField(max_length=50, null=True, blank=True)
     number = models.PositiveIntegerField(null=True, default=0)
-    street = models.CharField(max_length=50, default='please add street name')
+    street = models.CharField(max_length=50, default='')
     paypal = models.CharField(max_length=10, default='please pay your dues')
     check = models.CharField(max_length=10, default='please pay your dues')
 
@@ -28,7 +28,7 @@ class Profile(models.Model):
 
 class PublicPost(models.Model):
     headline = models.CharField(max_length=60, default='Write a headline')
-    body = models.CharField(max_length=300)
+    body = models.TextField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
     author = models.ForeignKey('auth.User')

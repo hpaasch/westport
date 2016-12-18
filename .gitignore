@@ -4,3 +4,6 @@ db.sqlite3
 .direnv
 *.pyc
 .envrc
+nabes_app/static/nabes_app/img
+documents
+post_photos
