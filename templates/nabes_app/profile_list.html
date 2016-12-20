@@ -1,28 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-6">
-  <h3>Step One: Fill out the profile for {{ user }}</h3>
-<h5>(For use in the Westport directory)</h5>
-    <p>Primary Last Name: {{ user.profile.primary_last_name }}</p>
-    <p>Secondary Last Name: {{ user.profile.secondary_last_name }}</p>
-    <p>Family members: {{ user.profile.family_members }}</p>
-    <p>Primary Phone: {{ user.profile.primary_phone }}</p>
-    <p>Secondary Phone: {{ user.profile.secondary_phone }}</p>
-    <p>Primary Email: {{ user.profile.primary_email }}</p>
-    <p>Westport address: {{ user.profile.number }} {{ user.profile.street }}</p>
-    <p>Dues paid: {{ user.profile.paypal }}</p>
-    <p>    <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
-</p>
-<h3>Step Two: Pay your $40 dues</h3>
-<h5>(You can use Paypal as a guest, or you can use your Paypal account.)</h5>
-    <p><a class='btn btn-primary' role='button' href=#>Make  payment</a></p>
+  <h3>Your profile is for use in the annual Westport directory</h3>
+   <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
+<br>
+<br>
+<br>
+<h4>Current profile information:</h4>
+    <p><strong>Westport address: </strong> {{ user.profile.number }} {{ user.profile.street }}</p>
+    <p><strong>Primary Email: </strong> {{ user.profile.primary_email }}</p>
+    <p><strong>Primary Last Name: </strong> {{ user.profile.primary_last_name }}</p>
+    {# <p><strong>Secondary Last Name: </strong> {{ user.profile.secondary_last_name }}</p>#}
+    <p><strong>Family members: </strong> {{ user.profile.family_members }}</p>
+    <p><strong>Primary Phone: </strong> {{ user.profile.primary_phone }}</p>
+    {# <p><strong>Secondary Phone: </strong> {{ user.profile.secondary_phone }}</p>#}
 
-
-
-</div>
 
 {% endblock %}
 <div class="col-md-6">
   <img class="img-responsive" src="{{ user.profile.photo_url }}" alt="Responsive profile photo">
 </div>
+<h3>Step One: Fill out the profile for {{ user }}</h3>
+<h5>(For use in the Westport directory)</h5>
+  <p>Primary Last Name: {{ user.profile.primary_last_name }}</p>
+  <p>Secondary Last Name: {{ user.profile.secondary_last_name }}</p>
+  <p>Family members: {{ user.profile.family_members }}</p>
+  <p>Primary Phone: {{ user.profile.primary_phone }}</p>
+  <p>Secondary Phone: {{ user.profile.secondary_phone }}</p>
+  <p>Primary Email: {{ user.profile.primary_email }}</p>
+  <p>Westport address: {{ user.profile.number }} {{ user.profile.street }}</p>
+  <p>Dues paid: {{ user.profile.paypal }}</p>
+  <p>    <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
+</p>
+<h3>Step Two: Pay your $40 dues</h3>
+<h5>(You can use Paypal as a guest, or you can use your Paypal account.)</h5>
+  <p><a class='btn btn-primary' role='button' href=#>Make  payment</a></p>

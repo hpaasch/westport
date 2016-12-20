@@ -23,27 +23,54 @@
 
     <div class="col-md-6">
       <h2>Join now!</h2>
-        <h4>Create a Westport account and pay online</h4>
-        <ul>
-          <li><a href={% url 'create_account_view' %}>Click here</a> to create an account.</li>
-          <li>Your information will be used in the neighborhood directory.</li>
-          <li>We do not sell or share our neighborhood list.</li>
-        </ul>
+        <h4>Pay online</h4>
+        <ol>
+          <li><a href=# >Click here</a> to pay with PayPal (no account needed).</li>
+          <li>Then <a href={% url 'create_account_view' %}>click here </a>to submit information for the annual directory</a>.</li>
+        </ol>
+
         <h4>Pay by check</h4>
 
         <ul>
           <li><a href={% static "nabes_app/img/membership_form.pdf" %} >Click here</a> to print out the membership form.</li>
-          <li>Write a check to the "Westport Community Association."</li>
-          <li>Mail or drop off: <br> Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
+          <li>Write a check for $40 to the "Westport Community Association."</li>
+          <li>Mail or drop off to: <br> WCA treasurer Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
         </ul>
-        <h4>Want to advertise in our newsletter?</h4>
+        <!-- <h4>Provide directory information</h4>
+        <ul>
+          <li><a href={% url 'create_account_view' %}>Click here</a> to create an account.</li>
+          <li>WCA publishes a directory of residents each year.</li>
+          <li>We do not sell or share our neighborhood list.</li>
+        </ul> -->
+        <h4>Advertise in our newsletter</h4>
         <ul>
           <li><a href={% static "nabes_app/img/membership_form.pdf" %} >Click here</a> to print out the advertising form.</li>
-          <li>Starting price is $50.</li>
           <li>Write a check to the "Westport Community Association."</li>
-          <li>Mail or drop off: <br> Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
+          <li>Mail or drop off to: <br> WCA treasurer Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
         </ul>
     </div>
   </div>
 </div>
 {% endblock %}
+
+<h2>Join now!</h2>
+  <h4>Create a Westport account and pay online</h4>
+  <ul>
+    <li><a href={% url 'create_account_view' %}>Click here</a> to create an account.</li>
+    <li>Your information will be used in the neighborhood directory.</li>
+    <li>We do not sell or share our neighborhood list.</li>
+  </ul>
+  <h4>Pay by check</h4>
+
+  <ul>
+    <li><a href={% static "nabes_app/img/membership_form.pdf" %} >Click here</a> to print out the membership form.</li>
+    <li>Write a check to the "Westport Community Association."</li>
+    <li>Mail or drop off: <br> Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
+  </ul>
+  <h4>Want to advertise in our newsletter?</h4>
+  <ul>
+    <li><a href={% static "nabes_app/img/membership_form.pdf" %} >Click here</a> to print out the advertising form.</li>
+    <li>Starting price is $50.</li>
+    <li>Write a check to the "Westport Community Association."</li>
+    <li>Mail or drop off: <br> Anke Van Eijk <br> 8030 Island View Court <br> Denver NC 28037</li>
+  </ul>

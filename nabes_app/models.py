@@ -7,17 +7,19 @@ from django.contrib.staticfiles.templatetags.staticfiles import static # default
 
 class Profile(models.Model):
     resident = models.OneToOneField('auth.User')
-    primary_last_name = models.CharField(max_length=20, default='')
+    primary_last_name = models.CharField(max_length=20, default='required')
     secondary_last_name = models.CharField(max_length=20, default='optional', null=True, blank=True)
-    primary_phone = models.CharField(max_length=12, default='')
+    primary_phone = models.CharField(max_length=12, default='required')
     secondary_phone = models.CharField(max_length=12, default='optional', null=True, blank=True)
     family_members = models.CharField(max_length=100, default='optional', null=True, blank=True)
     # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     primary_email = models.EmailField(max_length=50, null=True, blank=True)
-    number = models.PositiveIntegerField(null=True, default=0)
+    number = models.PositiveIntegerField(null=True, blank=True)
     street = models.CharField(max_length=50, default='')
-    paypal = models.CharField(max_length=10, default='please pay your dues')
-    check = models.CharField(max_length=10, default='please pay your dues')
+    membership_status = models.CharField(max_length=10, default='') #make this a choice list
+    paypal = models.CharField(max_length=10, default='please pay your dues') #capture paypal
+    check = models.CharField(max_length=10, default='please pay your dues') #manual input
+    resident_status = models.CharField(max_length=5, default='') #make this a choice list to keep directory current
 
     @property
     def photo_url(self):
