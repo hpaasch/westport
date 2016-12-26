@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nabes_app',
+    'storages', #s3
 ]
 
 MIDDLEWARE = [
@@ -118,9 +119,26 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# FROM HERE storage on AWS
+# get all the secret stuff from hidden file
+aws_bucket_name = os.environ.get('aws_bucket_name')
 
+AWS_STORAGE_BUCKET_NAME = aws_bucket_name
+AWS_ACCESS_KEY_ID = os.getenv('aws_key')
+AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret')
+
+AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(aws_bucket_name)
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_URL = '/static/'
+
+if aws_bucket_name:
+    AWS_S3_FILE_OVERWRITE = False
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+STATIC_ROOT = BASE_DIR + "/static"
+STATICFILES_LOCATION = 'static'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR
