@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='profile',
             name='primary_last_name',
-            field=models.CharField(default='please provide primary last name', max_length=20),
+            field=models.CharField(default='', max_length=20),
         ),
     ]
