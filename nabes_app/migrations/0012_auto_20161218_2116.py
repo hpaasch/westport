@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='profile',
             name='secondary_last_name',
-            field=models.CharField(default='secondary last name optional', max_length=20, null=True),
+            field=models.CharField(default='', max_length=20, null=True),
         ),
     ]

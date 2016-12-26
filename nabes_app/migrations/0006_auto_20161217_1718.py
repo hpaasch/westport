@@ -15,11 +15,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='profile',
             name='check',
-            field=models.CharField(default='please pay your dues', max_length=10),
+            field=models.CharField(default='', max_length=10),
         ),
         migrations.AddField(
             model_name='profile',
             name='paypal',
-            field=models.CharField(default='please pay your dues', max_length=10),
+            field=models.CharField(default='', max_length=10),
         ),
     ]
