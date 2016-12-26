@@ -7,18 +7,18 @@ from django.contrib.staticfiles.templatetags.staticfiles import static # default
 
 class Profile(models.Model):
     resident = models.OneToOneField('auth.User')
-    primary_last_name = models.CharField(max_length=20, default='required')
-    secondary_last_name = models.CharField(max_length=20, default='optional', null=True, blank=True)
-    primary_phone = models.CharField(max_length=12, default='required')
-    secondary_phone = models.CharField(max_length=12, default='optional', null=True, blank=True)
-    family_members = models.CharField(max_length=100, default='optional', null=True, blank=True)
+    primary_last_name = models.CharField(max_length=50, default='')
+    secondary_last_name = models.CharField(max_length=50, default='', null=True, blank=True)
+    primary_phone = models.CharField(max_length=12, default='')
+    secondary_phone = models.CharField(max_length=12, default='', null=True, blank=True)
+    family_members = models.CharField(max_length=200, default='', null=True, blank=True)
     # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     primary_email = models.EmailField(max_length=50, null=True, blank=True)
     number = models.PositiveIntegerField(null=True, blank=True)
     street = models.CharField(max_length=50, default='')
-    membership_status = models.CharField(max_length=10, default='') #make this a choice list
-    paypal = models.CharField(max_length=10, default='please pay your dues') #capture paypal
-    check = models.CharField(max_length=10, default='please pay your dues') #manual input
+    membership_status = models.CharField(max_length=20, default='') #make this a choice list
+    paypal = models.CharField(max_length=10, default='') #capture paypal
+    check = models.CharField(max_length=10, default='') #manual input
     resident_status = models.CharField(max_length=5, default='') #make this a choice list to keep directory current
 
     @property
@@ -65,7 +65,7 @@ class BoardPost(models.Model):
 
 
 class Newsletter(models.Model):
-    document = models.FileField(upload_to='documents') # have it verify a pdf?
+    document = models.FileField(upload_to='documents', max_length=200) # max_length required!!!
     headline = models.CharField(max_length=50, default='Month: Highlight here')
     author = models.ForeignKey('auth.User')
     created = models.DateTimeField(auto_now_add=True)
