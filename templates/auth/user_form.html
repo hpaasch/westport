@@ -2,6 +2,7 @@
 
 {% block content %}
 <h3>First, create an account. </h3>
+<h4>(If you already have an account, <a href={% url 'login' %}>click here</a> to log in.)</h4>
 <form class="" action="" method="post">
  {% csrf_token %}
  {{ form.as_p }}
