@@ -22,18 +22,22 @@
       <div class="container">
         <div class="page-header">
         <h1>Westport Community Association<small>  Celebrating neighbors for 50 years</small></h1>
-        <a  href="{% url 'index_view' %}">Homepage</a>
-
+        <ul class="list-horizontal">
+          <li> <a  href="{% url 'index_view' %}">Homepage</a></li>
           {% if request.user.is_authenticated %}
-            <a  href={% url 'profile_view' %}>Profile</a>
-            <a  href="{% url 'logout' %}?next=/">Logout</a>
-            {# <a class="btn btn-primary" href="{% url 'newsletter_listview' %}">Newsletters</a>#}
+
+          <li> <a  href={% url 'profile_view' %}>Profile</a></li>
+          <li> <a  href="{% url 'logout' %}?next=/">Logout</a></li>
+           {# <a class="btn btn-primary" href="{% url 'newsletter_listview' %}">Newsletters</a>#}
+           {% else %}
+             <li><a  href={% url 'login' %}>Sign In</a></li>
+             {# <a class="btn btn-primary" href={% url 'create_account_view' %}>Create Account</a>#}
+           {% endif %}
+        </ul>
 
 
-          {% else %}
-            <a  href={% url 'login' %}>Sign In</a>
-            {# <a class="btn btn-primary" href={% url 'create_account_view' %}>Create Account</a>#}
-          {% endif %}
+
+
 
     </div>
       {% block content %}

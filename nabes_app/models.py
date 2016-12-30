@@ -30,13 +30,16 @@ class Profile(models.Model):
 
 class PublicPost(models.Model):
     headline = models.CharField(max_length=60, default='Write a headline')
-    body = models.TextField(max_length=500)
+    body = models.TextField(max_length=900)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
     author = models.ForeignKey('auth.User')
 
     class Meta:
         ordering = ['-created']
+
+    def __str__(self):
+        return self.headline
 
     @property
     def photo_url(self):

@@ -1,5 +1,4 @@
 
-
 .row {
   background-color: #ffff;
 }
@@ -9,4 +8,17 @@
         margin-left : 1em;
         margin-right : 1em;
     }
+}
+
+.list-horizontal li {
+	display:inline-block;
+}
+.list-horizontal li:before {
+	content: '\00a0\2022\00a0\00a0';
+	color:#999;
+	color:rgba(0,0,0,0.5);
+	font-size:11px;
+}
+.list-horizontal li:first-child:before {
+	content: '';
 }
