@@ -26,7 +26,7 @@ SECRET_KEY = 'wf8p+a=8#i_zoe0rkp-0^itfmab9sgq_1dt^9jk#51g84(!^6-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['westport.herokuapp.com'] # new requirement as of Django 1.10
+ALLOWED_HOSTS = ['westport.herokuapp.com', '127.0.0.1'] # new requirement as of Django 1.10
 
 
 # Application definition

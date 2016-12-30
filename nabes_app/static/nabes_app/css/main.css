@@ -3,3 +3,10 @@
 .row {
   background-color: #ffff;
 }
+
+@media (min-width: 992px){
+    .page-header a {
+        margin-left : 1em;
+        margin-right : 1em;
+    }
+}
