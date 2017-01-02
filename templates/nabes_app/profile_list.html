@@ -7,11 +7,11 @@
 <br>
 <br>
 <h4>Current profile information:</h4>
-    <p><strong>Westport address: </strong> {{ user.profile.number }} {{ user.profile.street }}</p>
+    <p><strong>Westport address: </strong> {{ user.profile.house_number }} {{ user.profile.street }}</p>
     <p><strong>Primary Email: </strong> {{ user.profile.primary_email }}</p>
     <p><strong>Primary Last Name: </strong> {{ user.profile.primary_last_name }}</p>
     {# <p><strong>Secondary Last Name: </strong> {{ user.profile.secondary_last_name }}</p>#}
-    <p><strong>Family members: </strong> {{ user.profile.family_members }}</p>
+    <p><strong>Family members (including yourself): </strong> {{ user.profile.family_members }}</p>
     <p><strong>Primary Phone: </strong> {{ user.profile.primary_phone }}</p>
     {# <p><strong>Secondary Phone: </strong> {{ user.profile.secondary_phone }}</p>#}
 
@@ -28,7 +28,7 @@
   <p>Primary Phone: {{ user.profile.primary_phone }}</p>
   <p>Secondary Phone: {{ user.profile.secondary_phone }}</p>
   <p>Primary Email: {{ user.profile.primary_email }}</p>
-  <p>Westport address: {{ user.profile.number }} {{ user.profile.street }}</p>
+  <p>Westport address: {{ user.profile.house_number }} {{ user.profile.street }}</p>
   <p>Dues paid: {{ user.profile.paypal }}</p>
   <p>    <a class='btn btn-primary' role='button' href={% url 'profile_update_view' %}>Update profile</a>
 </p>

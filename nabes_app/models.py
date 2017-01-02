@@ -14,7 +14,7 @@ class Profile(models.Model):
     family_members = models.CharField(max_length=200, default='', null=True, blank=True)
     # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     primary_email = models.EmailField(max_length=50, null=True, blank=True)
-    number = models.PositiveIntegerField(null=True, blank=True)
+    house_number = models.PositiveIntegerField(null=True, blank=True)
     street = models.CharField(max_length=50, default='')
     membership_status = models.CharField(max_length=20, default='') #make this a choice list
     paypal = models.CharField(max_length=10, default='') #capture paypal
