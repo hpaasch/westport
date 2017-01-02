@@ -27,9 +27,12 @@ class Profile(models.Model):
             return self.photo.url
         return static('nabes_app/img/westport_1.jpg')
 
+    def __str__(self):
+        return self.primary_last_name
+
 
 class PublicPost(models.Model):
-    headline = models.CharField(max_length=60, default='Write a headline')
+    headline = models.CharField(max_length=60, default='')
     body = models.TextField(max_length=900)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
@@ -48,20 +51,28 @@ class PublicPost(models.Model):
 
 
 class MemberPost(models.Model):
+    headline = models.CharField(max_length=60, default='')
     body = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
     author = models.ForeignKey('auth.User')
+
+    def __str__(self):
+        return self.headline
 
     class Meta:
         ordering = ['-created']
 
 
 class BoardPost(models.Model):
+    headline = models.CharField(max_length=60, default='')
     body = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
     author = models.ForeignKey('auth.User')
+
+    def __str__(self):
+        return self.headline
 
     class Meta:
         ordering = ['-created']
