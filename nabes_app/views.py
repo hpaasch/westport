@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
@@ -63,6 +64,7 @@ class LeadershipListView(ListView):
 class DirectoryListView(ListView):
     template_name='directory.html'
     model = Profile
+    # permission_required = 'profile.user.is_staff'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
