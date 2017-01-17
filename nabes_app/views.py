@@ -67,5 +67,14 @@ class DirectoryListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['directory_list'] = Profile.objects.filter(resident_status='yes').order_by('primary_last_name')
+        return context
+
+
+class StreetListView(ListView):
+    template_name='street_list.html'
+    model = Profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['street_list'] = Profile.objects.filter(resident_status='yes').order_by('street', 'house_number')
         return context

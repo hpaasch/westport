@@ -21,25 +21,6 @@
   </table>
 
 
-  <table class="table table-hover" id="public">
-      <th>Address</th>
-      <th>Primary last name</th>
-      <th>Family members</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <tbody>
-      {% for resident in street_list %}
-          <tr>
-              <td>{{ resident.house_number}} {{ resident.street }}</td>
-              <td>{{ resident.primary_last_name }}</td>
-              <td>{{ resident.family_members }}</td>
-              <td><a href="mailto:{{ resident.primary_email }}">{{ resident.primary_email }}</a></td>
-              <td>{{ resident.primary_phone }}</td>
-          </tr>
-      {% endfor %}
-      </tbody>
-  </table>
-
 
 
 {% endblock %}
