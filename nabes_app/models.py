@@ -5,17 +5,93 @@ from django.dispatch import receiver # enables profile attached to user
 from django.contrib.staticfiles.templatetags.staticfiles import static # default image for photo_urls
 
 
+ALLISON_COURT = 'Allison Court'
+BADGER_RUN = 'Badger Run'
+BLADES_TRAIL = 'Blades Trail'
+BLUE_WATER_COURT = 'Blue Water Court'
+BORDER_CREEK_COURT = 'Border Creek Court'
+BRADFORD_LANE = 'Bradford Lane'
+BURTON_LANE = 'Burton Lane'
+CHAPEL_VIEW_COURT = 'Chapel View Court'
+DEER_RUN = 'Deer Run'
+DIMPLE_COURT = 'Dimple Court'
+FAIRFIELD_FOREST_ROAD = 'Fairfield Forest Road'
+FOX_RUN = 'Fox Run'
+GOLD_SPRINGS_WAY = 'Gold Springs Way'
+GOLF_COURSE_DRIVE_NORTH = 'Golf Course Drive North'
+GOLF_COURSE_DRIVE_SOUTH = 'Golf Course Drive South'
+GREEN_COVE_COURT = 'Green Cove Court'
+HOLLY_COURT = 'Holly Court'
+HOWARD_LANE = 'Howard Lane'
+ISLAND_VIEW_COURT = 'Island View Court'
+LAKE_SHORE_ROAD_NORTH = 'Lake Shore Road North'
+LAKE_SHORE_ROAD_SOUTH = 'Lake Shore Road South'
+LAKEVIEW_DRIVE = 'Lakeview Drive'
+LAS_BRISAS = 'Las Brisas'
+MINERS_COVE_COURT = "Miner's Cove Court"
+NIBLICK_COURT = 'Niblick Court'
+NINE_IRON_COURT = 'Nine Iron Court'
+NORMAN_COURT = 'Norman Court'
+NORTH_HIGHWAY_16 = 'North Highway 16'
+PINE_GLADE_DRIVE = 'Pine Glade Drive'
+PLACID_COURT = 'Placid Court'
+SAND_WEDGE_COURT = 'Sand Wedge Court'
+SHANKLIN_LANE = 'Shanklin Lane'
+SHINY_LEAF_DRIVE = 'Shiny Leaf Drive'
+THREE_WOOD_DRIVE = 'Three Wood Drive'
+WESTCAPE_DRIVE = 'Westcape Drive'
+WOODLAND_COURT = 'Woodland Court'
+
+
 class Profile(models.Model):
+    STREET_CHOICES = (
+        (ALLISON_COURT, 'Allison Court'),
+        (BADGER_RUN, 'Badger Run'),
+        (BLADES_TRAIL, 'Blades Trail'),
+        (BLUE_WATER_COURT, 'Blue Water Court'),
+        (BORDER_CREEK_COURT, 'Border Creek Court'),
+        (BRADFORD_LANE, 'Bradford Lane'),
+        (BURTON_LANE, 'Burton Lane'),
+        (CHAPEL_VIEW_COURT, 'Chapel View Court'),
+        (DEER_RUN, 'Deer Run'),
+        (DIMPLE_COURT, 'Dimple Court'),
+        (FAIRFIELD_FOREST_ROAD, 'Fairfield Forest Road'),
+        (FOX_RUN, 'Fox Run'),
+        (GOLD_SPRINGS_WAY, 'Gold Springs Way'),
+        (GOLF_COURSE_DRIVE_NORTH, 'Golf Course Drive North'),
+        (GOLF_COURSE_DRIVE_SOUTH, 'Golf Course Drive South'),
+        (GREEN_COVE_COURT, 'Green Cove Court'),
+        (HOLLY_COURT, 'Holly Court'),
+        (HOWARD_LANE, 'Howard Lane'),
+        (ISLAND_VIEW_COURT, 'Island View Court'),
+        (LAKE_SHORE_ROAD_NORTH, 'Lake Shore Road North'),
+        (LAKE_SHORE_ROAD_SOUTH, 'Lake Shore Road South'),
+        (LAKEVIEW_DRIVE, 'Lakeview Drive'),
+        (LAS_BRISAS, 'Las Brisas'),
+        (MINERS_COVE_COURT, 'Miners Cove Court'),
+        (NIBLICK_COURT, 'Niblick Court'),
+        (NINE_IRON_COURT, 'Nine Iron Court'),
+        (NORMAN_COURT, 'Norman Court'),
+        (NORTH_HIGHWAY_16, 'North Highway 16'),
+        (PINE_GLADE_DRIVE, 'Pine Glade Drive'),
+        (PLACID_COURT, 'Placid Court'),
+        (SAND_WEDGE_COURT, 'Sand Wedge Court'),
+        (SHANKLIN_LANE, 'Shanklin Lane'),
+        (SHINY_LEAF_DRIVE, 'Shiny Leaf Drive'),
+        (THREE_WOOD_DRIVE, 'Three Wood Drive'),
+        (WESTCAPE_DRIVE, 'Westcape Drive'),
+        (WOODLAND_COURT, 'Woodland Court'),
+    )
     resident = models.OneToOneField('auth.User')
     primary_last_name = models.CharField(max_length=50, default='')
     secondary_last_name = models.CharField(max_length=50, default='', null=True, blank=True)
     primary_phone = models.CharField(max_length=12, default='')
     secondary_phone = models.CharField(max_length=12, default='', null=True, blank=True)
-    family_members = models.CharField(max_length=200, default='', null=True, blank=True)
+    family_member_names = models.CharField(max_length=200, default='', null=True, blank=True)
     # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
     primary_email = models.EmailField(max_length=50, null=True, blank=True)
     house_number = models.PositiveIntegerField(null=True, blank=True)
-    street = models.CharField(max_length=50, default='')
+    street = models.CharField(choices=STREET_CHOICES, max_length=50, default='')
     membership_status = models.CharField(max_length=20, default='') #make this a choice list
     paypal = models.CharField(max_length=10, default='') #capture paypal
     check = models.CharField(max_length=10, default='') #manual input

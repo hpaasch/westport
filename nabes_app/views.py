@@ -40,7 +40,7 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     success_url = reverse_lazy('profile_view')
     fields = ['primary_last_name',  'primary_phone',
-     'primary_email', 'family_members', 'house_number', 'street']
+     'primary_email', 'family_member_names', 'house_number', 'street']
 
     def get_object(self, queryset=None):
         return self.request.user.profile
