@@ -85,7 +85,7 @@ class Profile(models.Model):
     resident = models.OneToOneField('auth.User')
     primary_last_name = models.CharField(max_length=50, default='')
     secondary_last_name = models.CharField(max_length=50, default='', null=True, blank=True)
-    primary_phone = models.CharField(max_length=12, default='')
+    primary_phone = models.CharField(max_length=12, default='', help_text='Example: 704-555-4321')
     secondary_phone = models.CharField(max_length=12, default='', null=True, blank=True)
     family_member_names = models.CharField(max_length=200, default='', null=True, blank=True)
     # photo = models.ImageField(upload_to='profile_photos', verbose_name='Profile photo')
