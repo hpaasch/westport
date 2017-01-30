@@ -12,9 +12,10 @@
           <tr>
               <td>{{ resident.primary_last_name }}</td>
               <td>{{ resident.family_member_names }}</td>
-              <td>{{ resident.house_number}} {{ resident.street }}</td>
+              <td><a href="http://maps.google.com/?q={{ resident.house_number}}
+                {{ resident.street }}, Denver, NC, 28037">{{ resident.house_number}} {{ resident.street }}</a></td>
               <td><a href="mailto:{{ resident.primary_email }}">{{ resident.primary_email }}</a></td>
-              <td>{{ resident.primary_phone }}</td>
+              <td><a href="tel:+1-{{ resident.primary_phone }}">{{ resident.primary_phone }}</a></td>
           </tr>
       {% endfor %}
       </tbody>

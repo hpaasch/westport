@@ -4,19 +4,29 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import PermissionRequiredMixin
-
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
-
-
 from django.contrib.auth.models import User
 
+from reportlab.pdfgen import canvas # for pdf output
+from django.http import HttpResponse # for pdf output
 
 from nabes_app.models import (PublicPost, BoardPost, MemberPost, Newsletter,
 Profile, Officer)
 
 from nabes_app.forms import ProfileUpdateForm
 
+
+def directory_printed(request):
+    # see notes in OneNote for this app
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="directory.pdf"'
+    directory = canvas.Canvas(response)
+    directory.drawString(100,100, "Howdy, Westport.")
+    directory.showPage()
+    directory.save()
+    return response
+    
 
 class IndexView(ListView):
     template_name = 'index.html'
