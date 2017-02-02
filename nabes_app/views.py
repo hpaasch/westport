@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response # added per youtube for pdf
+from django.template import RequestContext # added per youtube for pdf
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
@@ -9,6 +11,8 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.models import User
 
 from reportlab.pdfgen import canvas # for pdf output
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.pagesizes import landscape
 from django.http import HttpResponse # for pdf output
 
 from nabes_app.models import (PublicPost, BoardPost, MemberPost, Newsletter,
@@ -17,16 +21,24 @@ Profile, Officer)
 from nabes_app.forms import ProfileUpdateForm
 
 
+
 def directory_printed(request):
-    # see notes in OneNote for this app
+# see notes in OneNote for this app
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="directory.pdf"'
     directory = canvas.Canvas(response)
-    directory.drawString(100,100, "Howdy, Westport.")
+    # c = canvas.Canvas(response, pagesize=landscape(letter))
+    # c.setFont('Helvetica', 48, leading=None).... see documentation
+    # c.drawString(requires coordinates)
+    # c.drawCentredString(415, 500, "Certificate of completion")
+    # c.drawCentredString(415, 450, "presented to")
+    # c.drawCentredString(415, 390, attendeename)
+
+    directory.drawString(40,800, "Howdy, dammit!") # very top left on letter size
     directory.showPage()
     directory.save()
     return response
-    
+
 
 class IndexView(ListView):
     template_name = 'index.html'
@@ -78,7 +90,7 @@ class DirectoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['directory_list'] = Profile.objects.filter(resident_status='yes').order_by('primary_last_name')
+        context['directory_list'] = Profile.objects.filter(resident_status='Current').order_by('primary_last_name')
         return context
 
 
@@ -88,5 +100,9 @@ class StreetListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['street_list'] = Profile.objects.filter(resident_status='yes').order_by('street', 'house_number')
+        context['street_list'] = Profile.objects.filter(resident_status='Current').order_by('street', 'house_number')
+        printout = self.request.GET.get('make_pdf')
+        if printout:
+            directory_printed
+
         return context

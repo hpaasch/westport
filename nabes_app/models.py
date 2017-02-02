@@ -5,6 +5,7 @@ from django.dispatch import receiver # enables profile attached to user
 from django.contrib.staticfiles.templatetags.staticfiles import static # default image for photo_urls
 
 
+NONE = '----'
 ALLISON_COURT = 'Allison Court'
 BADGER_RUN = 'Badger Run'
 BLADES_TRAIL = 'Blades Trail'
@@ -41,10 +42,13 @@ SHINY_LEAF_DRIVE = 'Shiny Leaf Drive'
 THREE_WOOD_DRIVE = 'Three Wood Drive'
 WESTCAPE_DRIVE = 'Westcape Drive'
 WOODLAND_COURT = 'Woodland Court'
+CURRENT = 'Current'
+NOT_CURRENT = 'Not Current'
 
 
 class Profile(models.Model):
     STREET_CHOICES = (
+        (NONE, '----'),
         (ALLISON_COURT, 'Allison Court'),
         (BADGER_RUN, 'Badger Run'),
         (BLADES_TRAIL, 'Blades Trail'),
@@ -82,6 +86,10 @@ class Profile(models.Model):
         (WESTCAPE_DRIVE, 'Westcape Drive'),
         (WOODLAND_COURT, 'Woodland Court'),
     )
+    STATUS_CHOICES = (
+        (CURRENT, 'Current'),
+        (NOT_CURRENT, 'Not Current'),
+    )
     resident = models.OneToOneField('auth.User')
     primary_last_name = models.CharField(max_length=50, default='')
     secondary_last_name = models.CharField(max_length=50, default='', null=True, blank=True)
@@ -92,10 +100,10 @@ class Profile(models.Model):
     primary_email = models.EmailField(max_length=50, null=True, blank=True)
     house_number = models.PositiveIntegerField(null=True, blank=True)
     street = models.CharField(choices=STREET_CHOICES, max_length=50, default='')
-    membership_status = models.CharField(max_length=20, default='') #make this a choice list
-    paypal = models.CharField(max_length=10, default='') #capture paypal
-    check = models.CharField(max_length=10, default='') #manual input
-    resident_status = models.CharField(max_length=5, default='') #make this a choice list to keep directory current
+    membership_status = models.CharField(choices=STATUS_CHOICES, max_length=20, default='Current') #make this a choice list
+    paypal = models.CharField(max_length=10, default='verify') #capture paypal
+    check = models.CharField(max_length=10, default='verify') #manual input
+    resident_status = models.CharField(choices=STATUS_CHOICES, max_length=20, default='Current') #make this a choice list to keep directory current
 
     @property
     def photo_url(self):

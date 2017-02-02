@@ -6,7 +6,8 @@ from django.contrib.auth.views import logout
 
 
 from nabes_app.views import (IndexView, NewsletterListView, CreateAccountView,
-ProfileView, ProfileUpdateView, LeadershipListView, DirectoryListView, StreetListView)
+ProfileView, ProfileUpdateView, LeadershipListView, DirectoryListView, StreetListView,
+directory_printed)
 
 
 urlpatterns = [
@@ -21,4 +22,5 @@ urlpatterns = [
     url(r'^leadership/$', LeadershipListView.as_view(), name='leadership_listview'),
     url(r'^directory/$', DirectoryListView.as_view(), name='directory_listview'),
     url(r'^streets/$', StreetListView.as_view(), name='street_listview'),
+    url(r'^pdf/$', directory_printed, name='pdf_view'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
