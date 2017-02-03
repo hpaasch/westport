@@ -44,6 +44,11 @@ WESTCAPE_DRIVE = 'Westcape Drive'
 WOODLAND_COURT = 'Woodland Court'
 CURRENT = 'Current'
 NOT_CURRENT = 'Not Current'
+PUBLIC = 'Public'
+HIDDEN = 'Hidden'
+TOP = 'Top'
+MIDDLE = 'Middle'
+BOTTOM = 'Bottom'
 
 
 class Profile(models.Model):
@@ -116,11 +121,18 @@ class Profile(models.Model):
 
 
 class PublicPost(models.Model):
+    PRIORITY_CHOICES = (
+        (TOP, 'Top'),
+        (MIDDLE, 'Middle'),
+        (BOTTOM, 'Bottom'),
+        (HIDDEN, 'Hidden'),
+    )
     headline = models.CharField(max_length=60, default='')
     body = models.TextField(max_length=900)
     created = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(upload_to='post_photos')
     author = models.ForeignKey('auth.User')
+    priority = models.CharField(choices=PRIORITY_CHOICES, max_length=10, null=True, blank=True)
 
     class Meta:
         ordering = ['-created']
