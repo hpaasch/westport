@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <div id="wrap">
+      <div id="main">
+
 {% block navigation %}
 <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
@@ -18,8 +21,8 @@
       </div>
     </nav>
 {% endblock %}
+
     <div class="container">
-      <div class="container">
         <div class="page-header">
         <h1>Westport Community Association<small>  Celebrating neighbors for 50 years</small></h1>
         <ul class="list-horizontal">
@@ -40,19 +43,26 @@
            {% endif %}
         </ul>
 
+      </div>
+          {% block content %}
+            <p>
+              A neighborhood site for the Westport Neighborhood in eastern Lincoln County, NC.
+            </p>
+          {% endblock %}
+        </div>
 
-
-
+      </div>
 
     </div>
-      {% block content %}
-        <p>
-          A neighborhood site for the Westport Neighborhood in eastern Lincoln County, NC.
-        </p>
-      {% endblock %}
+    <div id="footer">
+      <footer>
+        &copy;2017. Built by Hope E. Paasch, <a href="http://www.hepaasch.com">www.hepaasch.com</a>
+      </footer>
     </div>
+
     <script src="//static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(101016603); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101016603ns.gif" /></p></noscript>
   </body>
+
 </html>

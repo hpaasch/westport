@@ -6,22 +6,37 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-7">
       <div class="thumbnail">
-        {% for public_post in object_list|slice:":1" %}
-          <img class="img-responsive" src="{{ public_post.photo_url }}" alt="Responsive image" />
-          <div class="caption">
-            <h3>{{ public_post.headline }}</h3>
-            <p>{{public_post.body|linebreaks }}</p>
-          </div>
-
-        {% endfor %}
-
+        {% autoescape off %}
+          {% for post in top_post_list %}
+            <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
+            <div class="caption">
+              <h3>{{ post.headline }}</h3>
+              <p>{{ post.body|linebreaks }}</p>
+            </div>
+          {% endfor %}
+          {% for post in middle_post_list %}
+          <hr>
+            <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
+            <div class="caption">
+              <h3>{{ post.headline }}</h3>
+              <p>{{ post.body|linebreaks }}</p>
+            </div>
+          {% endfor %}
+          {% for post in bottom_post_list %}
+          <hr>
+            <img class="img-responsive" src="{{ post.photo_url }}" alt="Responsive image" />
+            <div class="caption">
+              <h3>{{ post.headline }}</h3>
+              <p>{{ post.body|linebreaks }}</p>
+            </div>
+          {% endfor %}
+        {% endautoescape %}
       </div>
-
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
       <h2>Join now!</h2>
         <h4>Pay online</h4>
         <ol>
