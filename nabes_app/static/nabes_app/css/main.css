@@ -1,3 +1,5 @@
+/* sticky footer starts */
+
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +35,11 @@ body:before {
   width: 0;
   margin-top: -32767px;
 }
+/* sticky footer ends */
 
+.img-responsive {
+  
+}
 
 .row {
   background-color: #fff;
