@@ -7,6 +7,9 @@
       <th>Address</th>
       <th>Email</th>
       <th>Phone</th>
+      {% if request.user.is_staff%}
+      <th>Username</th>
+      {% endif %}
       <tbody>
       {% for resident in directory_list %}
           <tr>
@@ -16,6 +19,9 @@
                 {{ resident.street }}, Denver, NC, 28037">{{ resident.house_number}} {{ resident.street }}</a></td>
               <td><a href="mailto:{{ resident.primary_email }}">{{ resident.primary_email }}</a></td>
               <td><a href="tel:+1-{{ resident.primary_phone }}">{{ resident.primary_phone }}</a></td>
+              {% if request.user.is_staff%}
+              <td>{{ resident.resident.username }}</td>
+              {% endif %}
           </tr>
       {% endfor %}
       </tbody>

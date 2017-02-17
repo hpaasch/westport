@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
     <div class="col-md-7">
@@ -16,7 +16,7 @@
               <p>{{ post.body|linebreaks }}</p>
             </div>
           {% endfor %}
-
+          
           {% for post in middle_post_list %}
           <hr>
             <img class="img-responsive"  src="{{ post.photo_url }}" alt="Responsive image" />
@@ -34,6 +34,7 @@
             </div>
           {% endfor %}
         {% endautoescape %}
+
     </div>
   </div>
 
