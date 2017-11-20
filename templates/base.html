@@ -30,8 +30,8 @@
           {% if request.user.is_authenticated %}
 
           <li> <a  href={% url 'profile_view' %}>Profile</a></li>
+          <li> <a  href="{% url 'newsletter_listview' %}">Newsletters</a></li>
           <li> <a  href="{% url 'logout' %}?next=/">Logout</a></li>
-           {# <a class="btn btn-primary" href="{% url 'newsletter_listview' %}">Newsletters</a>#}
 
            {% else %}
              <li><a  href={% url 'login' %}>Already registered? Sign in here</a></li>

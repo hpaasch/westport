@@ -79,6 +79,11 @@ class NewsletterListView(ListView):
     template_name = 'newsletter.html'
     model = Newsletter
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['newsletter_list'] = Newsletter.objects.order_by('-created')
+        return context
+
 
 class LeadershipListView(ListView):
     template_name = 'leadership.html'

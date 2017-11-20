@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% for newsletter in object_list %}
-<embed src="{{ newsletter.document_url }}" width="1100px" height="1200px" />
+<h3>Our Newsletter</h3>
+<p>The Westporter Newsletter is published monthly for paid members. </p>
+<p>To submit a news item, email <a href="mailto:ccrowell_pcp@yahoo.com">Candace Crowell</a>.</p>
+<p>To purchase an advertisement, email <a href="mailto:anke67@att.net">Anke van Eijk</a>.</p>
+<br>
+<h4>Click on a month to view that issue of The Westporter:</h4>
+  {% for newsletter in newsletter_list %}
+  <h5>
+    <a href="{{newsletter.document_url}}">{{ newsletter.headline}}</a>
+  </h5>
   {% endfor %}
 {% endblock %}
